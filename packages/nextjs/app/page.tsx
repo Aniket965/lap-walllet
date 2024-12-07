@@ -34,27 +34,48 @@ const WalletCard = () => {
     }, {
       onSuccess(data, variables, context) {
         console.log({data}, 'animoji success');
-        console.log({variables}, 'animoji success');
-        console.log({context}, 'animoji success');
       },
       onSettled(data, error, variables, context) {
-        post_data(connectedAddress, connectedAddress, '1000', '0x6b175474e89094c44da98b954eedeac495271d0f', data, wagmiConfig.chainId);
+        post_data({
+          userAddress: connectedAddress,
+          walletAddress: connectedAddress,
+          amount: '1000000',
+          userSignature: data?.toString() ?? '',
+          chainId: 10,
+          tokenAddress: '0x6BE4d338d9A3E89354263E5414F9a2C733D81F99'
+        });
       },
     })
-  
-    const post_data = (userAddress: string, walletAddress: string, amount: string, tokenAddress : string, userSignature: string, chainId: number) => {
+
+    const post_data = (
+      {
+        userAddress,
+        walletAddress,
+        amount,
+        userSignature,
+        chainId,
+        tokenAddress
+      }: {
+        userAddress: string,
+        walletAddress: string,
+        amount: string,
+        userSignature: string,
+        chainId: number,
+        tokenAddress: string
+      }
+    ) => {
       fetch('http://localhost:6969/add-liqudity', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userAddress,
-          walletAddress,
-          amount,
-          tokenAddress,
-          userSignature,
-          chainId
+          "userAddress": userAddress,
+          "walletAddress": walletAddress,
+          "amount": amount,
+          "tokenAddress": tokenAddress,
+          "userSignature": userSignature,
+          "chainId": chainId
         }),
       })
         .then((response) => response.json())
