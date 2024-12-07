@@ -1,1 +1,3 @@
 @openzeppelin/contracts/=lib/openzeppelin-contracts/contracts
+socket-protocol/=lib/socket-protocol/
+solady/=lib/solady/src/

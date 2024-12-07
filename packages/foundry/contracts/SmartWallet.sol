@@ -5,7 +5,7 @@ pragma solidity >=0.8.0 <0.9.0;
 import "forge-std/console.sol";
 
 
-contract SmartAccount {
+contract SmartWallet {
   // State Variables
   address public immutable owner;
   string public version = "1.0.0";
