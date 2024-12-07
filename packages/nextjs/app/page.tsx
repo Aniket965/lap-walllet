@@ -25,7 +25,8 @@ const matter = localFont({
 const WalletCard = () => {
   const { address: connectedAddress } = useAccount();
   const { signMessageAsync } = useSignMessage();
-  const handle_sign_message = () => {
+  const handle_sign_message = (checked) => {
+    if(!checked) return
     if(!connectedAddress) return
     signMessageAsync({
       account: connectedAddress,
@@ -152,7 +153,7 @@ const WalletCard = () => {
         </div>
         <div style={styles.toggle}>
           <span className={`${matter.variable} font-sans`}>Smart Invest</span>
-          <Switch onChange={handle_sign_message}/>
+          <Switch onCheckedChange={handle_sign_message}/>
         </div>
         <div style={styles.tabs}>
           <span className={`${matter.variable} font-sans`} style={styles.tabActive}>Tokens</span>
