@@ -6,8 +6,7 @@ import {wagmiConfig} from "~~/services/web3/wagmiConfig";
 import { encodePacked, keccak256 } from 'viem';
 import {toast} from 'react-hot-toast';
 import localFont from '@next/font/local';
-import { Switch } from '~~/components/Switch';
-
+import { Switch } from '~~/schdn/components/ui/switch';
 
 const matter = localFont({
   src: [
@@ -22,7 +21,6 @@ const matter = localFont({
   ],
   variable: '--font-matter'
 })
-
 
 const WalletCard = () => {
   const { address: connectedAddress } = useAccount();
@@ -111,16 +109,15 @@ const WalletCard = () => {
     <div style={styles.container}>
       <div style={styles.card}>
         <div style={styles.header}>
-          <span style={styles.title}>aniket.eth</span>
+          <span className={`${matter.variable} font-sans`} style={styles.title}>aniket.eth</span>
           <div style={styles.walletContainer}>
-            <span style={styles.wallet} title={connectedAddress}>
+            <span className={`${matter.variable} font-sans`} style={styles.wallet} title={connectedAddress}>
               {connectedAddress?.slice(0,6)}...{connectedAddress?.slice(-4)}
             </span>
             <button 
               style={styles.copyButton}
               onClick={() => {
                 navigator.clipboard.writeText(connectedAddress || '');
-                // Use a toast notification instead of alert
                 toast.success('Address copied to clipboard');
               }}
               title="Copy address"
@@ -133,34 +130,33 @@ const WalletCard = () => {
           </div>
         </div>
         <div style={styles.balance}>
-          <h1 className={`${matter.variable} font-sans`} style={styles.balanceText}>$2000</h1>
+          <h1 className={`unbounded-text font-sans`} style={styles.balanceText}>$2000</h1>
         </div>
         <div style={styles.icons}>
           <div style={styles.iconWrapper}>
             <Scan size={24} />
-            <span style={styles.iconLabel}>Scan</span>
+            <span className={`${matter.variable} font-sans`} style={styles.iconLabel}>Scan</span>
           </div>
           <div style={styles.iconWrapper}>
             <Send size={24} />
-            <span style={styles.iconLabel}>Send</span>
+            <span className={`${matter.variable} font-sans`} style={styles.iconLabel}>Send</span>
           </div>
           <div style={styles.iconWrapper}>
             <Download size={24} />
-            <span style={styles.iconLabel}>Receive</span>
+            <span className={`${matter.variable} font-sans`} style={styles.iconLabel}>Receive</span>
           </div>
           <div style={styles.iconWrapper}>
             <CreditCard size={24} />
-            <span style={styles.iconLabel}>Buy</span>
+            <span className={`${matter.variable} font-sans`} style={styles.iconLabel}>Buy</span>
           </div>
         </div>
         <div style={styles.toggle}>
-          <span>Smart Invest</span>
-          {/* <input type="" style={styles.checkbox} onChange={handle_sign_message}/> */}
+          <span className={`${matter.variable} font-sans`}>Smart Invest</span>
           <Switch onChange={handle_sign_message}/>
         </div>
         <div style={styles.tabs}>
-          <span style={styles.tabActive}>Tokens</span>
-          <span style={styles.tab}>Activity</span>
+          <span className={`${matter.variable} font-sans`} style={styles.tabActive}>Tokens</span>
+          <span className={`${matter.variable} font-sans`} style={styles.tab}>Activity</span>
         </div>
         <div style={styles.tokenList}>
           {data.map((item, index) => (
@@ -168,8 +164,8 @@ const WalletCard = () => {
               <div style={styles.tokenInfo}>
                 <div style={styles.tokenIcon}>💰</div>
                 <div>
-                  <p style={styles.tokenName}>{item.token}</p>
-                  <p style={styles.tokenAmount}>{item.amount} USDC</p>
+                  <p className={`${matter.variable} font-sans`} style={styles.tokenName}>{item.token}</p>
+                  <p className={`${matter.variable} font-sans`} style={styles.tokenAmount}>{item.amount} USDC</p>
                 </div>
               </div>
               <div style={styles.tokenValue}>
