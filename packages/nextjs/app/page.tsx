@@ -100,10 +100,8 @@ const WalletCard = () => {
     
   }
   const data = [
-    { token: 'USD Coin', amount: 1000, value: '0.79%' },
-    { token: 'USD Coin', amount: 1000, value: '0.79%' },
-    { token: 'USD Coin', amount: 1000, value: '0.79%' },
-    { token: 'USD Coin', amount: 1000, value: '0.79%' },
+    { token: 'ETHEREUM', amount: 1000, value: '0.79%', img: 'https://media.socket.tech/tokens/all/ETH' },
+    { token: 'USDC', amount: 1000, value: '0.79%', img: 'https://media.socket.tech/tokens/all/USDC' },
   ];
 
   return (
@@ -163,7 +161,7 @@ const WalletCard = () => {
           {data.map((item, index) => (
             <div key={index} style={styles.tokenRow}>
               <div style={styles.tokenInfo}>
-                <div style={styles.tokenIcon}>💰</div>
+                <div style={styles.tokenIcon}><img src={item.img}></img></div>
                 <div>
                   <p className={`${matter.variable} font-sans`} style={styles.tokenName}>{item.token}</p>
                   <p className={`${matter.variable} font-sans`} style={styles.tokenAmount}>{item.amount} USDC</p>
@@ -186,21 +184,20 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    minHeight: '100vh',
+    height: '85vh',
     backgroundColor: '#f0f2f5',
     padding: '20px',
-    maxHeight: '100vh',
-    overflow: 'auto'
+    overflow: 'hidden'
   },
   card: {
     width: '380px',
-    maxHeight: '90vh',
+    height: '100%',
     padding: '20px',
     backgroundColor: '#ffffff',
     borderRadius: '20px',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
     fontFamily: 'Inter, sans-serif',
-    overflow: 'auto'
+    overflowY: 'auto'
   },
   header: {
     display: 'flex',
@@ -302,8 +299,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column' as const,
     gap: '12px',
-    overflow: 'auto',
-    maxHeight: 'calc(90vh - 350px)'
+    overflow: 'auto'
   },
   tokenRow: {
     display: 'flex',
