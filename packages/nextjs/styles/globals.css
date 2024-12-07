@@ -1,6 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap');
 
 :root,
 [data-theme] {
@@ -29,4 +30,11 @@ p {
 
 .btn.btn-ghost {
   @apply shadow-none;
+}
+
+.unbounded-text {
+  font-family: "Unbounded", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
